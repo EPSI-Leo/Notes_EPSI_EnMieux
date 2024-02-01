@@ -1,18 +1,36 @@
+// cours.component.ts
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user';
-import { SessionService } from 'src/app/services/session.service';
+import { CoursService } from 'src/app/services/cours.service';
+
 
 @Component({
   selector: 'app-cours',
   templateUrl: './cours.component.html',
-  styleUrls: ['./cours.component.scss']
+  styleUrls: ['./cours.component.scss'],
 })
 export class CoursComponent implements OnInit {
-  authUser: User | null = null;
+  cours: any[] = [];
+  isLoading: boolean = false;
 
-  constructor(private sessionService: SessionService) {}
+  constructor(private coursService: CoursService) {}
 
-  ngOnInit(): void {
-    this.authUser = this.sessionService.getAuthUser();
+  ngOnInit() {
+    this.loadCoursByIdProf();
+  }
+
+  loadCoursByIdProf() {
+    this.isLoading = true;
+
+    this.coursService.getCoursByIdProf().subscribe(
+      (cours) => {
+        this.cours = cours;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Error while fetching cours:', error);
+        this.isLoading = false;
+        // Gérer l'erreur, par exemple, afficher un message à l'utilisateur
+      }
+    );
   }
 }
