@@ -1,0 +1,23 @@
+<div *ngIf="isLoading" class="loader">
+  Loading...
+</div>
+
+<div *ngIf="!isLoading">
+  <ul>
+    <li *ngFor="let cour of cours">
+      <a [routerLink]="['/cours-details', cour.id]">{{ cour.titre }}</a>
+      <i class="material-icons" (click)="onDeleteClick(cour.id)">
+        delete
+        </i>
+        <i class="material-icons" (click)="onEditClick(cour.id)">
+          edit
+          </i>
+
+    </li>
+  </ul>
+</div>
+
+<button [routerLink]="['/cours-add']">
+  Ajouter un cours
+</button>
+

@@ -1,7 +1,6 @@
 <div class="form-container">
   <!--<div class="title-group"><p class="title">Login</p></div>-->
   <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
-
     <div class="form-group">
       <label for="username">Identifiant</label>
       <input type="text" *ngIf="loginForm.get('username')" [formControl]="$any(loginForm).get('username')" id="username" placeholder="">

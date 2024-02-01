@@ -1,0 +1,20 @@
+.cours-item {
+  display: flex;
+  align-items: center;
+}
+
+.edit-icon,
+.delete-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #3498db;
+}
+
+.delete-icon {
+  color: #e74c3c;
+}
+
+.edit-icon:hover,
+.delete-icon:hover {
+  cursor: pointer;
+}
