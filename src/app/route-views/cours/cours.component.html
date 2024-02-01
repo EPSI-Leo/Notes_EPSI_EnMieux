@@ -1,1 +1,10 @@
 <p>cours works!</p>
+<div *ngIf="authUser">
+  <h2>User Profile</h2>
+  <p>Username: {{ authUser.username }}</p>
+  <p>Name: {{ authUser.nom }} {{ authUser.prenom }}</p>
+  <!-- Ajoutez d'autres propriétés de l'utilisateur selon votre modèle -->
+</div>
+<div *ngIf="!authUser">
+  <p>Please log in to view the user profile.</p>
+</div>

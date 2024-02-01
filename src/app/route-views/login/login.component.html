@@ -1,15 +1,18 @@
 <div class="form-container">
   <!--<div class="title-group"><p class="title">Login</p></div>-->
-	<form class="form">
-    <!-- [formGroup]="produitForm" (ngSubmit)="onSubmit()"-->
-		<div class="form-group">
-			<label for="username">Username</label>
-			<input type="text" name="username" id="username" placeholder="">
-		</div>
-		<div class="form-group">
-			<label for="password">Password</label>
-			<input type="password" name="password" id="password" placeholder="">
-		</div>
-		<button type="submit" class="sign">Sign in</button>
-	</form>
+  <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
+
+    <div class="form-group">
+      <label for="username">Identifiant</label>
+      <input type="text" *ngIf="loginForm.get('username')" [formControl]="$any(loginForm).get('username')" id="username" placeholder="">
+    </div>
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input type="password" *ngIf="loginForm.get('password')" [formControl]="$any(loginForm).get('password')" id="password" placeholder="">
+    </div>
+    <button type="submit" class="sign" [disabled]="loginForm.invalid">Connexion</button>
+  </form>
+</div>
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
 </div>
