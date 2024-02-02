@@ -16,7 +16,7 @@ namespace Notes_ESPI_en_mieux.Controllers
             _dbContext = dbContext;
         }
 
-        // GET: api/Cour
+        // GET: api/Cours
         [HttpGet]
         public IActionResult GetCours()
         {
@@ -24,7 +24,7 @@ namespace Notes_ESPI_en_mieux.Controllers
             return Ok(cours);
         }
 
-        // GET: api/Cour/5
+        // GET: api/Cours/5
         [HttpGet("{id}")]
         public IActionResult GetCourById(int id)
         {
@@ -38,7 +38,7 @@ namespace Notes_ESPI_en_mieux.Controllers
             return Ok(cour);
         }
 
-        // GET: api/Cour/ByIdProf/5
+        // GET: api/Cours/ByIdProf/5
         [HttpGet("ByIdProf/{idProf}")]
         public IActionResult GetCourByIdProf(int idProf)
         {
@@ -53,7 +53,7 @@ namespace Notes_ESPI_en_mieux.Controllers
         }
 
 
-        // POST: api/Cour
+        // POST: api/Cours
         [HttpPost]
         public IActionResult CreateCour([FromBody] Cours cour)
         {
@@ -68,7 +68,7 @@ namespace Notes_ESPI_en_mieux.Controllers
             return CreatedAtAction(nameof(GetCourById), new { id = cour.Id }, cour);
         }
 
-        // PUT: api/Cour/5
+        // PUT: api/Cours/5
         [HttpPut("{id}")]
         public IActionResult UpdateCour(int id, [FromBody] Cours cour)
         {
@@ -103,7 +103,7 @@ namespace Notes_ESPI_en_mieux.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Cour/5
+        // DELETE: api/Cours/5
         [HttpDelete("{id}")]
         public IActionResult DeleteCour(int id)
         {
