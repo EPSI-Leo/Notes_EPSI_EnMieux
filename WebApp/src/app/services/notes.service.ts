@@ -30,6 +30,10 @@ export class NotesService {
     return this.http.get<Note>(`/api/Note/${id}`);
   }
 
+  public getNotesByCoursId(id: number): Observable<Note[]> {
+    return this.http.get<Note[]>(`/api/Note/GetNotesByCoursId/${id}`);
+  }
+
   public getNotes(): Observable<Note[]> {
     return this._Notes;
   }

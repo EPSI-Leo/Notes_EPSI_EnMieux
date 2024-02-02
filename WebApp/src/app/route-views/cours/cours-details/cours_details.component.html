@@ -1,1 +1,16 @@
-<p>details-cours works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th *ngFor="let eval of evals">{{ eval.sujet }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let eleve of eleves">
+      <td>{{ eleve.nom }} {{ eleve.prenom }}</td>
+      <td *ngFor="let eval of evals">
+        {{ getGradeForStudentAndEvaluation(eleve.id, eval.id) }}
+      </td>
+    </tr>
+  </tbody>
+</table>

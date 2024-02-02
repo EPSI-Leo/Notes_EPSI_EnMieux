@@ -30,6 +30,10 @@ export class EvaluationsService {
     return this.http.get<Evaluation>(`/api/Evaluation/${id}`);
   }
 
+  public getEvaluationsByCoursId(id: number): Observable<Evaluation[]> {
+    return this.http.get<Evaluation[]>(`/api/Evaluation/GetEvaluationsByCoursId/${id}`);
+  }
+
   public getEvaluations(): Observable<Evaluation[]> {
     return this._Evaluations;
   }

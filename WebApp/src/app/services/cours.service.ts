@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cours } from '../models/cours';
+import { Eleve } from '../models/eleve';
 
 
 @Injectable({
@@ -34,6 +35,10 @@ export class CoursService {
 
   public getAllCours(): Observable<Cours[]> {
     return this._Cours;
+  }
+
+  public getElevesByCoursId(id: number): Observable<Eleve[]> {
+    return this.http.get<Eleve[]>(`/api/Cours/GetUsersByCoursId/${id}`);
   }
 
   getCoursByIdProf(): Observable<any[]> {
