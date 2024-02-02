@@ -134,6 +134,25 @@ namespace Notes_ESPI_en_mieux.Controllers
             return Ok(eleves);
         }
 
+        // GET: api/Cours/GetUsersByCoursId/{id}
+        [HttpGet("GetUsersByCoursId/{id}")]
+        public IActionResult GetUsersByCoursId(int id)
+        {
+            var classeId = _dbContext.CoursClasses
+                .Where(cc => cc.IdCours == id)
+                .Select(cc => cc.IdClasse)  
+                .FirstOrDefault();
+
+            if (classeId == null)
+            {
+                return NotFound("Classe non trouvée pour le cours spécifié.");
+            }
+                      
+            var eleves = GetElevesByClasseId(classeId); 
+
+            return Ok(eleves);
+        }
+
     }
 
 
