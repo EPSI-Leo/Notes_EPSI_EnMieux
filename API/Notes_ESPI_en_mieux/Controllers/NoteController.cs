@@ -104,5 +104,40 @@ namespace Notes_ESPI_en_mieux.Controllers
 
             return NoContent(); 
         }
+
+        //GET: api/Note/GetNoteByEleveId/1
+        [HttpGet("GetNoteByEleveId/{eleveId}")]
+        public IActionResult GetNoteByEleveId(int eleveId)
+        {
+            var notesByEleve = _dbContext.Notes.Where(n => n.IdUser == eleveId).ToList();
+            return Ok(notesByEleve);
+        }
+
+        //GET api/Note/GetNoteByCoursId
+        [HttpGet("GetNoteByCoursId/{coursId}")]
+        public IActionResult GetNoteByCoursId(int coursId)
+        {
+            var notesByCours = _dbContext.Notes
+                .Join(
+                    _dbContext.Evaluations,
+                    note => note.IdEvaluation,
+                    evaluation => evaluation.Id,
+                    (note, evaluation) => new { Note = note, Evaluation = evaluation }
+                )
+                .Join(
+                    _dbContext.Cours,
+                    combined => combined.Evaluation.IdCours,
+                    cours => cours.Id,
+                    (combined, cours) => new { combined.Note, Cours = cours }
+                )
+                .Where(result => result.Cours.Id == coursId)
+                .Select(result => result.Note)
+                .ToList();
+
+            return Ok(notesByCours);
+        }
+
     }
+
+
 }

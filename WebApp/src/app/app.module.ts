@@ -8,6 +8,7 @@ import { CoursComponent } from './route-views/cours/cours-list/cours-list.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { DetailsCoursComponent } from './route-views/cours/cours-details/cours_details.component';
 import { CoursAddComponent } from './route-views/cours/cours-add/cours-add.component';
+import { CoursEditComponent } from './route-views/cours/cours-edit/cours-edit.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CoursAddComponent } from './route-views/cours/cours-add/cours-add.compo
     LoginComponent,
     CoursComponent,
     DetailsCoursComponent,
-    CoursAddComponent
+    CoursAddComponent,
+    CoursEditComponent
   ],
   imports: [
     BrowserModule,
