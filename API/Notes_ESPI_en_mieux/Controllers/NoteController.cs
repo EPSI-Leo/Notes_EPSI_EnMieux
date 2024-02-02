@@ -106,7 +106,7 @@ namespace Notes_ESPI_en_mieux.Controllers
         }
 
         //GET: api/Note/GetNotesByEleveId/1
-        [HttpGet("GetNoteByEleveId/{eleveId}")]
+        [HttpGet("GetNotesByEleveId/{eleveId}")]
         public IActionResult GetNotesByEleveId(int eleveId)
         {
             var notesByEleve = _dbContext.Notes.Where(n => n.IdUser == eleveId).ToList();
