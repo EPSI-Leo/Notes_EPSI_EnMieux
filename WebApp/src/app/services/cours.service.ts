@@ -2,13 +2,39 @@ import { SessionService } from './session.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Cours } from '../models/cours';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class CoursService {
-  constructor(private http: HttpClient, private sessionService: SessionService) {}
+
+  private _Cours: Observable<Cours[]>;
+
+  constructor(private http: HttpClient, private sessionService: SessionService) {
+    this._Cours = this.http.get<Cours[]>('/api/Cours');
+  }
+
+  public addCours(cours: Cours): Observable<any> {
+    return this.http.post('/api/Cours', JSON.stringify(cours))
+  }
+
+  public removeCours(id: number): Observable<any> {
+    return this.http.delete(`/api/Cours/${id}`)
+  }
+
+  public updateCours(cours: Cours): Observable<any> {
+    return this.http.put(`/api/Cours/${cours.id}`, JSON.stringify(cours))
+  }
+
+  public getCours(id: number): Observable<Cours | undefined> {
+    return this.http.get<Cours>(`/api/Cours/${id}`);
+  }
+
+  public getAllCours(): Observable<Cours[]> {
+    return this._Cours;
+  }
 
   getCoursByIdProf(): Observable<any[]> {
     const idProf = this.sessionService.getAuthUser()?.id;
