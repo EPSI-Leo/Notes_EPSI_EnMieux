@@ -1,7 +1,6 @@
 import { EvaluationsService } from './../../../services/evaluations.service';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from 'express';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cours } from 'src/app/models/cours';
 import { Eleve } from 'src/app/models/eleve';
 import { Evaluation } from 'src/app/models/evaluation';

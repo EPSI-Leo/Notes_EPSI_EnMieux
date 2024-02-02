@@ -105,17 +105,17 @@ namespace Notes_ESPI_en_mieux.Controllers
             return NoContent(); 
         }
 
-        //GET: api/Note/GetNoteByEleveId/1
+        //GET: api/Note/GetNotesByEleveId/1
         [HttpGet("GetNoteByEleveId/{eleveId}")]
-        public IActionResult GetNoteByEleveId(int eleveId)
+        public IActionResult GetNotesByEleveId(int eleveId)
         {
             var notesByEleve = _dbContext.Notes.Where(n => n.IdUser == eleveId).ToList();
             return Ok(notesByEleve);
         }
 
         //GET api/Note/GetNoteByCoursId
-        [HttpGet("GetNoteByCoursId/{coursId}")]
-        public IActionResult GetNoteByCoursId(int coursId)
+        [HttpGet("GetNotesByCoursId/{coursId}")]
+        public IActionResult GetNotesByCoursId(int coursId)
         {
             var notesByCours = _dbContext.Notes
                 .Join(
