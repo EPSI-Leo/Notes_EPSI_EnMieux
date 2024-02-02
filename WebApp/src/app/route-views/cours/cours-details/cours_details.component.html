@@ -2,15 +2,25 @@
   <thead>
     <tr>
       <th>Student Name</th>
-      <th *ngFor="let eval of evals">{{ eval.sujet }}</th>
+      <ng-container *ngFor="let eval of evals">
+        <th colspan="2">{{ eval.sujet }}</th>
+      </ng-container>
+    </tr>
+    <tr>
+      <th></th>
+      <ng-container *ngFor="let eval of evals">
+        <th>Note</th>
+        <th>Coeff</th>
+      </ng-container>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let eleve of eleves">
-      <td>{{ eleve.nom }} {{ eleve.prenom }}</td>
-      <td *ngFor="let eval of evals">
-        {{ getGradeForStudentAndEvaluation(eleve.id, eval.id) }}
-      </td>
+      <td>{{ eleve.prenom }} {{ eleve.nom }}</td>
+      <ng-container *ngFor="let eval of evals">
+        <td>{{ getGrade(eleve.id, eval.id) }}</td>
+        <td>{{ getCoefficient(eleve.id, eval.id) }}</td>
+      </ng-container>
     </tr>
   </tbody>
 </table>

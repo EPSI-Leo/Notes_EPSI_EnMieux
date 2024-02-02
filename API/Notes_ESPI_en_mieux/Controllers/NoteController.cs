@@ -113,7 +113,7 @@ namespace Notes_ESPI_en_mieux.Controllers
             return Ok(notesByEleve);
         }
 
-        //GET api/Note/GetNoteByCoursId
+        //GET api/Note/GetNotesByCoursId
         [HttpGet("GetNotesByCoursId/{coursId}")]
         public IActionResult GetNotesByCoursId(int coursId)
         {

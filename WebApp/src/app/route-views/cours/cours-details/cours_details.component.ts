@@ -34,8 +34,8 @@ export class DetailsCoursComponent {
       this._coursService.getCours(coursId).subscribe((cours: Cours | undefined) => {
         this.cours = cours;
       });
-      this._coursService.getElevesByCoursId(coursId).subscribe((eleves: Eleve[]) => {
-        this.eleves = eleves;
+      this._coursService.getElevesByCoursId(coursId).subscribe((eleves: any) => {
+        this.eleves = eleves.value;
       });
       this._evalService.getEvaluationsByCoursId(coursId).subscribe((evals: Evaluation[]) => {
         this.evals = evals;
@@ -46,10 +46,14 @@ export class DetailsCoursComponent {
     });
   }
 
-
-  public getGradeForStudentAndEvaluation(studentId: number, evaluationId: number): string {
-    const note = this.notes.find(n => n.eleve?.id === studentId && n.evaluation?.id === evaluationId);
+  public getGrade(studentId: number, evaluationId: number): string {
+    const note = this.notes.find(n => n.idUser === studentId && n.idEvaluation === evaluationId);
     return note ? `${note.valeur}` : '';
+  }
+
+  public getCoefficient(studentId: number, evaluationId: number): string {
+    const note = this.notes.find(n => n.idUser === studentId && n.idEvaluation === evaluationId);
+    return note ? `${note.coefficient}` : '';
   }
 
   public onSubmit() {
