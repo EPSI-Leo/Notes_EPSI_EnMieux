@@ -104,5 +104,17 @@ namespace Notes_ESPI_en_mieux.Controllers
 
             return NoContent();
         }
+
+        // GET: api/Evaluation/GetEvaluationsByCoursId/{coursId}
+        [HttpGet("GetEvaluationsByCoursId/{coursId}")]
+        public IActionResult GetEvaluationsByCoursId(int coursId)
+        {
+            var evaluationsByCours = _dbContext.Evaluations
+                .Where(e => e.IdCours == coursId)
+                .ToList();
+
+            return Ok(evaluationsByCours);
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 // cours.component.ts
 import { Component, OnInit } from '@angular/core';
+import { Cours } from 'src/app/models/cours';
 import { CoursService } from 'src/app/services/cours.service';
 
 
@@ -25,6 +26,7 @@ export class CoursComponent implements OnInit {
       (cours) => {
         this.cours = cours;
         this.isLoading = false;
+
       },
       (error) => {
         console.error('Error while fetching cours:', error);
@@ -34,14 +36,21 @@ export class CoursComponent implements OnInit {
     );
   }
 
-  onEditClick(courId: number) {
-    //TODO
-    console.log(`Édition du cours ${courId}`);
-  }
 
   onDeleteClick(courId: number) {
-    //TODO
-    console.log(`Suppression du cours ${courId}`);
+   this.coursService.removeCours(courId).subscribe(
+    (cours) => {
+      this.cours = cours;
+      this.isLoading = false;
+      this.loadCoursByIdProf();
+    },
+    (error) => {
+      console.error('Error while fetching cours:', error);
+      this.isLoading = false;
+      //TODO Gérer l'erreur, par exemple, afficher un message à l'utilisateur
+    }
+  );
+
   }
 
   onAddClick() {

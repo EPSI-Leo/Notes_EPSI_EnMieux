@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'cours', component: CoursComponent},
   { path: 'cours-details/:id', component: DetailsCoursComponent},
   { path: 'cours-add', component: CoursAddComponent},
+  { path: 'cours-edit', component: CoursAddComponent},
   { path: '**', redirectTo: ''},
 ];
 
