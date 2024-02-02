@@ -1,11 +1,8 @@
+import { Prof } from './prof';
+
 export class Cours {
   id: number = 0;
-  idProf: number = 0;
+  Prof: Prof | undefined;
   titre: string = '';
   description: string = '';
-  constructor(data?: Partial<Cours>) {
-    if (data) {
-      Object.assign(this, data);
-    }
-  }
 }
