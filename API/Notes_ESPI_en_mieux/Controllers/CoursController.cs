@@ -120,28 +120,19 @@ namespace Notes_ESPI_en_mieux.Controllers
             return NoContent();
         }
 
-        // GET: api/Cours/ID_cours
-        [HttpGet("GetUsersByCoursId/{id}")]
-        public IActionResult GetUsersByCoursId(int id)
+        
+
+        // GET: api/Cours/GetElevesByClasseId/5
+        [HttpGet("GetElevesByClasseId/{id}")]
+        public IActionResult GetElevesByClasseId(int id)
         {
-            // Assurez-vous que CoursClasses est bien inclus dans votre modèle EF
-            var classe = _dbContext.CoursClasses
-                .Where(cc => cc.ID_Cours == id)
-                .Include(cc => cc.Classe)
-                .FirstOrDefault()?.Classe;
-
-            if (classe == null)
-            {
-                return NotFound("Classe non trouvée pour le cours spécifié.");
-            }
-
-            // Assurez-vous que User est bien inclus dans votre modèle EF
-            var eleves = GetElevesByClasseId(classe.ID);
+            
+            var eleves = _dbContext.Users
+                .Where(u => u.IdClasse == id && u.Role == "Eleve")
+                .ToList();
 
             return Ok(eleves);
         }
-
-
 
     }
 

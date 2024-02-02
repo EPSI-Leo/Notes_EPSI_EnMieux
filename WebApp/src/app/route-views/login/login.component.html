@@ -1,17 +1,20 @@
-<div class="form-container">
-  <!--<div class="title-group"><p class="title">Login</p></div>-->
-  <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
-    <div class="form-group">
-      <label for="username">Identifiant</label>
-      <input type="text" *ngIf="loginForm.get('username')" [formControl]="$any(loginForm).get('username')" id="username" placeholder="">
+<div class="login-container">
+  <div class="login-form" *ngIf="loginForm">
+    <h2 class="login-title">Connexion</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Identifiant</label>
+        <!-- Utilisez [formControl] pour lier le FormControl directement si nécessaire -->
+        <input type="text" *ngIf="loginForm.get('username')" [formControl]="$any(loginForm).get('username')" id="username" placeholder="Entrez vos identifiants">
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <!-- Utilisez [formControl] pour lier le FormControl directement si nécessaire -->
+        <input type="password" *ngIf="loginForm.get('password')" [formControl]="$any(loginForm).get('password')" id="password" placeholder="Entrez votre mot de passe">      </div>
+      <button type="submit" class="btn-login" [disabled]="loginForm.invalid">Connexion</button>
+    </form>
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
     </div>
-    <div class="form-group">
-      <label for="password">Mot de passe</label>
-      <input type="password" *ngIf="loginForm.get('password')" [formControl]="$any(loginForm).get('password')" id="password" placeholder="">
-    </div>
-    <button type="submit" class="sign" [disabled]="loginForm.invalid">Connexion</button>
-  </form>
-</div>
-<div *ngIf="errorMessage" class="error-message">
-  {{ errorMessage }}
+  </div>
 </div>

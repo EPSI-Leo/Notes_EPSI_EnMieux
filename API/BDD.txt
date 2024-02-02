@@ -1,0 +1,1 @@
+Scaffold-DbContext "server=127.0.0.1;port=3306;user=root;password=;database=Notes_EPSI_EnMieux" MySql.EntityFrameworkCore -OutputDir Entities -f

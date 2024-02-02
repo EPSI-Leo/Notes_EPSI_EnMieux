@@ -25,6 +25,8 @@ public partial class NotesEpsiEnMieuxContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    public virtual DbSet<CoursClasses> CoursClasses { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     { }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -53,6 +55,21 @@ public partial class NotesEpsiEnMieuxContext : DbContext
             entity.Property(e => e.Titre).HasMaxLength(255);
         });
 
+        modelBuilder.Entity<CoursClasses>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("coursclasse");
+
+            entity.HasIndex(e => e.IdClasse, "ID_Classe");
+
+            entity.HasIndex(e => e.IdCours, "ID_Cours");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.IdClasse).HasColumnName("ID_Classe");
+            entity.Property(e => e.IdCours).HasColumnName("ID_Cours");
+        });
+
         modelBuilder.Entity<Evaluation>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
@@ -73,13 +90,13 @@ public partial class NotesEpsiEnMieuxContext : DbContext
 
             entity.ToTable("note");
 
-            entity.HasIndex(e => e.IdEleve, "ID_Eleve");
-
             entity.HasIndex(e => e.IdEvaluation, "ID_Evaluation");
 
+            entity.HasIndex(e => e.IdUser, "ID_User");
+
             entity.Property(e => e.Id).HasColumnName("ID");
-            entity.Property(e => e.IdEleve).HasColumnName("ID_Eleve");
             entity.Property(e => e.IdEvaluation).HasColumnName("ID_Evaluation");
+            entity.Property(e => e.IdUser).HasColumnName("ID_User");
         });
 
         modelBuilder.Entity<User>(entity =>

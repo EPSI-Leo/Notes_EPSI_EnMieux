@@ -7,7 +7,7 @@ public partial class Note
 {
     public int Id { get; set; }
 
-    public int? IdEleve { get; set; }
+    public int? IdUser { get; set; }
 
     public int? IdEvaluation { get; set; }
 
