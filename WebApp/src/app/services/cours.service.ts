@@ -19,7 +19,9 @@ export class CoursService {
   }
 
   public addCours(cours: CreateCoursModel): Observable<any> {
-    return this.http.post('/api/Cours', JSON.stringify(cours))
+    const body = JSON.stringify(cours);
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.post('/api/Cours', body, { headers })
   }
 
   public removeCours(id: number): Observable<any> {

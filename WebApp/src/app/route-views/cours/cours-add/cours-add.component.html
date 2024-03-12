@@ -1,21 +1,14 @@
-<form action="" method="post">
-
-  <label for="champ1">Champ 1 :</label>
-  <input type="text" id="champ1" name="champ1" required>
-  <br>
-
-  <label for="champ2">Champ 2 :</label>
-  <input type="text" id="champ2" name="champ2" required>
-  <br>
-
-  <label for="multidropdown">Multidropdown :</label>
-  <select id="multidropdown" name="multidropdown[]" multiple>
-      <option value="option1">Option 1</option>
-      <option value="option2">Option 2</option>
-      <option value="option3">Option 3</option>
+<form [formGroup]="coursForm" (ngSubmit)="onSubmit()">
+  <label for="idsClasse">Classes:</label>
+  <select formControlName="idsClasse" multiple>
+    <option *ngFor="let classe of classes" [value]="classe.id">{{ classe.nom }}</option>
   </select>
-  <br>
 
-  <input type="submit" value="Envoyer">
+  <label for="titre">Titre:</label>
+  <input type="text" formControlName="titre">
 
+  <label for="description">Description:</label>
+  <textarea formControlName="description"></textarea>
+
+  <button type="submit" onsubmit="onSubmit()">Submit</button>
 </form>

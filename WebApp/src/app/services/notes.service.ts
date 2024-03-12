@@ -15,7 +15,9 @@ export class NotesService {
   }
 
   public addNote(note: Note): Observable<any> {
-    return this.http.post('/api/Note', JSON.stringify(note))
+    const body = JSON.stringify(note);
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.post('/api/Note', body, { headers })
   }
 
   public removeNote(id: number): Observable<any> {
@@ -23,7 +25,9 @@ export class NotesService {
   }
 
   public updateNote(note: Note): Observable<any> {
-    return this.http.put(`/api/Note/${note.id}`, JSON.stringify(note))
+    const body = JSON.stringify(note);
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.put(`/api/Note/${note.id}`, body, { headers })
   }
 
   public getNote(id: number): Observable<Note | undefined> {

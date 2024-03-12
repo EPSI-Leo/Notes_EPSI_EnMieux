@@ -21,7 +21,10 @@
         <td>
           <input type="number" [value]="getGrade(eleve.id, eval.id)" (input)="setGrade($event.target, eleve.id, eval.id)">
         </td>
-        <td>{{ getCoefficient(eleve.id, eval.id) }}</td>
+        <!-- TODO : validation  -->
+        <td>
+          <input type="number" [value]="getCoeff(eleve.id, eval.id)" (input)="setCoeff($event.target, eleve.id, eval.id)">
+        </td>
       </ng-container>
     </tr>
   </tbody>

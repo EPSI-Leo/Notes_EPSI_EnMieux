@@ -53,8 +53,7 @@ export class DetailsCoursComponent {
 
   public setGrade(value: any, studentId: number, evaluationId: number): void {
     const noteIndex = this.notes.findIndex(n => n.idUser === studentId && n.idEvaluation === evaluationId);
-    this.notes[noteIndex].valeur = +value.value; // Convert value to a number if necessary
-    console.log(this.notes[noteIndex])
+    this.notes[noteIndex].valeur = +value.value;
     this._notesService.updateNote(this.notes[noteIndex])
       .subscribe({
         next: (response) => {
@@ -66,9 +65,23 @@ export class DetailsCoursComponent {
       });
   }
 
-  public getCoefficient(studentId: number, evaluationId: number): string {
+  public getCoeff(studentId: number, evaluationId: number): string {
     const note = this.notes.find(n => n.idUser === studentId && n.idEvaluation === evaluationId);
     return note ? `${note.coefficient}` : '';
+  }
+
+  public setCoeff(value: any, studentId: number, evaluationId: number): void {
+    const noteIndex = this.notes.findIndex(n => n.idUser === studentId && n.idEvaluation === evaluationId);
+    this.notes[noteIndex].coefficient = +value.value;
+    this._notesService.updateNote(this.notes[noteIndex])
+      .subscribe({
+        next: (response) => {
+          console.log('Notes saved successfully:', response);
+        },
+        error: (error) => {
+          console.error('Error saving notes:', error);
+        }
+      });
   }
 
   public onSubmit() {
