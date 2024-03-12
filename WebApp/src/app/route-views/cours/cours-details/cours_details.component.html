@@ -18,7 +18,9 @@
     <tr *ngFor="let eleve of eleves">
       <td>{{ eleve.prenom }} {{ eleve.nom }}</td>
       <ng-container *ngFor="let eval of evals">
-        <td>{{ getGrade(eleve.id, eval.id) }}</td>
+        <td>
+          <input type="number" [value]="getGrade(eleve.id, eval.id)" (input)="setGrade($event.target, eleve.id, eval.id)">
+        </td>
         <td>{{ getCoefficient(eleve.id, eval.id) }}</td>
       </ng-container>
     </tr>

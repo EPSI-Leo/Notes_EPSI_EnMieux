@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DetailsCoursComponent } from './route-views/cours/cours-details/cours_details.component';
 import { CoursAddComponent } from './route-views/cours/cours-add/cours-add.component';
 import { CoursEditComponent } from './route-views/cours/cours-edit/cours-edit.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CoursEditComponent } from './route-views/cours/cours-edit/cours-edit.co
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
