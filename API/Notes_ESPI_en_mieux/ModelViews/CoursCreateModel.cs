@@ -5,6 +5,6 @@
         public int IdProf { get; set; }
         public string Titre { get; set; }
         public string Description { get; set; }
-        public int IdClasse { get; set; }
+        public List<int> IdClasses { get; set; }
     }
 }

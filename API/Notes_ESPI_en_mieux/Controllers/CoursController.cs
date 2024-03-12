@@ -73,18 +73,25 @@ namespace Notes_ESPI_en_mieux.Controllers
             _dbContext.Cours.Add(cour);
             _dbContext.SaveChanges();
 
-            // Créer le lien entre le cours et la classe
-            var coursClasse = new Coursclasse
+            // Créer les liens entre le cours et les classes
+            foreach (var idClasse in createCoursModel.IdClasses)
             {
-                IdCours = cour.Id,
-                IdClasse = createCoursModel.IdClasse
-            };
+                var coursClasse = new Coursclasse
+                {
+                    IdCours = cour.Id,
+                    IdClasse = idClasse
+                };
 
-            _dbContext.Coursclasses.Add(coursClasse);
+                _dbContext.Coursclasses.Add(coursClasse);
+            }
+
             _dbContext.SaveChanges();
 
             return CreatedAtAction(nameof(GetCourById), new { id = cour.Id }, cour);
         }
+
+
+
 
 
 
