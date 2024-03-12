@@ -7,7 +7,7 @@ public partial class Cours
 {
     public int Id { get; set; }
 
-    public int? IdProf { get; set; }
+    public int IdProf { get; set; }
 
     public string Titre { get; set; } = null!;
 

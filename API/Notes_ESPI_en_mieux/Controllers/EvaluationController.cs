@@ -9,9 +9,9 @@ namespace Notes_ESPI_en_mieux.Controllers
     [ApiController]
     public class EvaluationController : ControllerBase
     {
-        private readonly NotesEpsiEnMieuxContext _dbContext;
+        private readonly NotesEpsiEnmieuxContext _dbContext;
 
-        public EvaluationController(NotesEpsiEnMieuxContext dbContext)
+        public EvaluationController(NotesEpsiEnmieuxContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -9,9 +9,9 @@ namespace Notes_EPSI_EnMieux.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-        private readonly NotesEpsiEnMieuxContext _dbContext;
+        private readonly NotesEpsiEnmieuxContext _dbContext;
 
-        public TestController(NotesEpsiEnMieuxContext dbContext)
+        public TestController(NotesEpsiEnmieuxContext dbContext)
         {
             _dbContext = dbContext;
         }

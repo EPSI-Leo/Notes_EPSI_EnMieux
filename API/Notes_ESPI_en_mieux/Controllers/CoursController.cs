@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Notes_ESPI_en_mieux.Entities;
+using Notes_ESPI_en_mieux.Models;
 
 namespace Notes_ESPI_en_mieux.Controllers
 {
@@ -9,9 +10,9 @@ namespace Notes_ESPI_en_mieux.Controllers
     [ApiController]
     public class CoursController : ControllerBase
     {
-        private readonly NotesEpsiEnMieuxContext _dbContext;
+        private readonly NotesEpsiEnmieuxContext _dbContext;
 
-        public CoursController(NotesEpsiEnMieuxContext dbContext)
+        public CoursController(NotesEpsiEnmieuxContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -55,18 +56,37 @@ namespace Notes_ESPI_en_mieux.Controllers
 
         // POST: api/Cours
         [HttpPost]
-        public IActionResult CreateCour([FromBody] Cours cour)
+        public IActionResult CreateCour([FromBody] CreateCoursModel createCoursModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            var cour = new Cours
+            {
+                IdProf = createCoursModel.IdProf,
+                Titre = createCoursModel.Titre,
+                Description = createCoursModel.Description
+            };
+
             _dbContext.Cours.Add(cour);
+            _dbContext.SaveChanges();
+
+            // Créer le lien entre le cours et la classe
+            var coursClasse = new Coursclasse
+            {
+                IdCours = cour.Id,
+                IdClasse = createCoursModel.IdClasse
+            };
+
+            _dbContext.Coursclasses.Add(coursClasse);
             _dbContext.SaveChanges();
 
             return CreatedAtAction(nameof(GetCourById), new { id = cour.Id }, cour);
         }
+
+
 
         // PUT: api/Cours/5
         [HttpPut("{id}")]
@@ -138,7 +158,7 @@ namespace Notes_ESPI_en_mieux.Controllers
         [HttpGet("GetUsersByCoursId/{id}")]
         public IActionResult GetUsersByCoursId(int id)
         {
-            var classeId = _dbContext.CoursClasses
+            var classeId = _dbContext.Coursclasses
                 .Where(cc => cc.IdCours == id)
                 .Select(cc => cc.IdClasse)  
                 .FirstOrDefault();

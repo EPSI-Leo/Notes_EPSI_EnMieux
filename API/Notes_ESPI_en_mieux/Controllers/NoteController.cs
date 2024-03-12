@@ -9,9 +9,9 @@ namespace Notes_ESPI_en_mieux.Controllers
     [ApiController]
     public class NoteController : ControllerBase
     {
-        private readonly NotesEpsiEnMieuxContext _dbContext;
+        private readonly NotesEpsiEnmieuxContext _dbContext;
 
-        public NoteController(NotesEpsiEnMieuxContext dbContext)
+        public NoteController(NotesEpsiEnmieuxContext dbContext)
         {
             _dbContext = dbContext;
         }

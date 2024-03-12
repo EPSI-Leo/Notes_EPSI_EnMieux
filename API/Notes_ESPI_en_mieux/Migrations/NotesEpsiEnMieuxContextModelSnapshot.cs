@@ -9,7 +9,7 @@ using Notes_ESPI_en_mieux.Entities;
 
 namespace Notes_ESPI_en_mieux.Migrations
 {
-    [DbContext(typeof(NotesEpsiEnMieuxContext))]
+    [DbContext(typeof(NotesEpsiEnmieuxContext))]
     partial class NotesEpsiEnMieuxContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

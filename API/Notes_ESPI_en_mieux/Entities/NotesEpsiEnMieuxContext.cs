@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Notes_ESPI_en_mieux.Entities;
 
-public partial class NotesEpsiEnMieuxContext : DbContext
+public partial class NotesEpsiEnmieuxContext : DbContext
 {
-    public NotesEpsiEnMieuxContext()
+    public NotesEpsiEnmieuxContext()
     {
     }
 
-    public NotesEpsiEnMieuxContext(DbContextOptions<NotesEpsiEnMieuxContext> options)
+    public NotesEpsiEnmieuxContext(DbContextOptions<NotesEpsiEnmieuxContext> options)
         : base(options)
     {
     }
@@ -19,13 +19,13 @@ public partial class NotesEpsiEnMieuxContext : DbContext
 
     public virtual DbSet<Cours> Cours { get; set; }
 
+    public virtual DbSet<Coursclasse> Coursclasses { get; set; }
+
     public virtual DbSet<Evaluation> Evaluations { get; set; }
 
     public virtual DbSet<Note> Notes { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
-
-    public virtual DbSet<CoursClasses> CoursClasses { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     { }
@@ -55,7 +55,7 @@ public partial class NotesEpsiEnMieuxContext : DbContext
             entity.Property(e => e.Titre).HasMaxLength(255);
         });
 
-        modelBuilder.Entity<CoursClasses>(entity =>
+        modelBuilder.Entity<Coursclasse>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 

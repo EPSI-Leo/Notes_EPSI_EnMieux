@@ -10,7 +10,7 @@ using Notes_ESPI_en_mieux.Entities;
 
 namespace Notes_ESPI_en_mieux.Migrations
 {
-    [DbContext(typeof(NotesEpsiEnMieuxContext))]
+    [DbContext(typeof(NotesEpsiEnmieuxContext))]
     [Migration("20240201135900_initdb")]
     partial class initdb
     {
