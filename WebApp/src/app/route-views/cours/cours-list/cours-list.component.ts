@@ -22,35 +22,32 @@ export class CoursComponent implements OnInit {
   loadCoursByIdProf() {
     this.isLoading = true;
 
-    this.coursService.getCoursByIdProf().subscribe(
-      (cours) => {
-        this.cours = cours;
+    this.coursService.getCoursByIdProf().subscribe({
+      next: (response) => {
+        console.log(response)
+        this.cours = response;
         this.isLoading = false;
-
       },
-      (error) => {
+      error: (error) => {
         console.error('Error while fetching cours:', error);
         this.isLoading = false;
-        //TODO Gérer l'erreur, par exemple, afficher un message à l'utilisateur
       }
-    );
+    });
   }
 
 
   onDeleteClick(courId: number) {
-    this.coursService.removeCours(courId).subscribe(
-      (cours) => {
-        this.cours = cours;
+    this.coursService.removeCours(courId).subscribe({
+      next: (response) => {
+        console.log(response)
+        this.cours = response;
         this.isLoading = false;
-        this.loadCoursByIdProf();
       },
-      (error) => {
+      error: (error) => {
         console.error('Error while fetching cours:', error);
         this.isLoading = false;
-        //TODO Gérer l'erreur, par exemple, afficher un message à l'utilisateur
       }
-    );
-
+    });
   }
 
   onAddClick() {

@@ -8,13 +8,14 @@ import { EvalListComponent } from './route-views/eval/eval-list/eval-list.compon
 import { EvalDetailsComponent } from './route-views/eval/eval-details/eval-details.component';
 import { EvalAddComponent } from './route-views/eval/eval-add/eval-add.component';
 import { EvalEditComponent } from './route-views/eval/eval-edit/eval-edit.component';
+import { CoursEditComponent } from './route-views/cours/cours-edit/cours-edit.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'cours', component: CoursComponent},
   { path: 'cours-details/:id', component: DetailsCoursComponent},
   { path: 'cours-add', component: CoursAddComponent},
-  { path: 'cours-edit', component: CoursAddComponent},
+  { path: 'cours-edit', component: CoursEditComponent},
   { path: 'eval', component: EvalListComponent},
   { path: 'eval-details/:id', component: EvalDetailsComponent},
   { path: 'eval-add', component: EvalAddComponent},

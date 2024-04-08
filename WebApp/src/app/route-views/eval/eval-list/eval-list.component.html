@@ -4,6 +4,12 @@
   <ul>
     <li *ngFor="let p of evals" (click)="onClick(p)">
        {{ p.id }} - {{ p.sujet }} | {{ p.date }}
+       <i class="material-icons" (click)="onDeleteClick(p.id)">
+        delete
+        </i>
+        <i class="material-icons" [routerLink]="['/cours-edit']">
+          edit
+          </i>
     </li>
   </ul>
 
