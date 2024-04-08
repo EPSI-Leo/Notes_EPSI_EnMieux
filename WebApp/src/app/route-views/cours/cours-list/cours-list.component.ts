@@ -10,10 +10,10 @@ import { CoursService } from 'src/app/services/cours.service';
   styleUrls: ['./cours-list.component.scss'],
 })
 export class CoursComponent implements OnInit {
-  cours: any[] = [];
+  cours: Cours[] = [];
   isLoading: boolean = false;
 
-  constructor(private coursService: CoursService) {}
+  constructor(private coursService: CoursService) { }
 
   ngOnInit() {
     this.loadCoursByIdProf();
@@ -38,18 +38,18 @@ export class CoursComponent implements OnInit {
 
 
   onDeleteClick(courId: number) {
-   this.coursService.removeCours(courId).subscribe(
-    (cours) => {
-      this.cours = cours;
-      this.isLoading = false;
-      this.loadCoursByIdProf();
-    },
-    (error) => {
-      console.error('Error while fetching cours:', error);
-      this.isLoading = false;
-      //TODO Gérer l'erreur, par exemple, afficher un message à l'utilisateur
-    }
-  );
+    this.coursService.removeCours(courId).subscribe(
+      (cours) => {
+        this.cours = cours;
+        this.isLoading = false;
+        this.loadCoursByIdProf();
+      },
+      (error) => {
+        console.error('Error while fetching cours:', error);
+        this.isLoading = false;
+        //TODO Gérer l'erreur, par exemple, afficher un message à l'utilisateur
+      }
+    );
 
   }
 

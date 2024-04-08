@@ -1,0 +1,14 @@
+<form [formGroup]="evalForm" (ngSubmit)="onSubmit()">
+  <label for="idCours">Cours:</label>
+  <select formControlName="idCours">
+    <option *ngFor="let c of cours" [value]="c.id">{{ c.titre }} | {{ c.id}}</option>
+  </select>
+
+  <label for="sujet">Sujet:</label>
+  <input type="text" formControlName="sujet">
+
+  <label for="date">Date:</label>
+  <input type="date" formControlName="date">
+
+  <button type="submit" onsubmit="onSubmit()">Submit</button>
+</form>

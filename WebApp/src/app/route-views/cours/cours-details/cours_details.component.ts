@@ -47,7 +47,7 @@ export class DetailsCoursComponent {
   }
 
   public getGrade(studentId: number, evaluationId: number): string {
-    const note = this.notes.find(n => n.idUser === studentId && n.idEvaluation === evaluationId);
+    let note = this.notes.find(n => n.idUser === studentId && n.idEvaluation === evaluationId);
     return note ? `${note.valeur}` : '';
   }
 
@@ -66,7 +66,7 @@ export class DetailsCoursComponent {
   }
 
   public getCoeff(studentId: number, evaluationId: number): string {
-    const note = this.notes.find(n => n.idUser === studentId && n.idEvaluation === evaluationId);
+    let note = this.notes.find(n => n.idUser === studentId && n.idEvaluation === evaluationId);
     return note ? `${note.coefficient}` : '';
   }
 

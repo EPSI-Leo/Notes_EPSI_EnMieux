@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Notes_ESPI_en_mieux.Entities;
+using System.Linq;
 
 namespace Notes_ESPI_en_mieux.Controllers
 {
@@ -114,6 +115,23 @@ namespace Notes_ESPI_en_mieux.Controllers
                 .ToList();
 
             return Ok(evaluationsByCours);
+        }
+
+        // GET: api/Evaluation/GetEvaluationsByCoursId/{coursId}
+        [HttpGet("GetEvaluationsByProfId/{profId}")]
+        public IActionResult GetEvaluationsByProfId(int profId)
+        {
+            var evaluationsByProf = _dbContext.Cours
+                .Where(c => c.IdProf == profId)
+                .Join(
+                    _dbContext.Evaluations,
+                    cours => cours.Id,
+                    evaluation => evaluation.IdCours,
+                    (cours, evaluation) => evaluation
+                )
+                .ToList();
+
+            return Ok(evaluationsByProf);
         }
 
     }

@@ -10,6 +10,10 @@ import { DetailsCoursComponent } from './route-views/cours/cours-details/cours_d
 import { CoursAddComponent } from './route-views/cours/cours-add/cours-add.component';
 import { CoursEditComponent } from './route-views/cours/cours-edit/cours-edit.component';
 import { FormsModule } from '@angular/forms';
+import { EvalListComponent } from './route-views/eval/eval-list/eval-list.component';
+import { EvalAddComponent } from './route-views/eval/eval-add/eval-add.component';
+import { EvalDetailsComponent } from './route-views/eval/eval-details/eval-details.component';
+import { EvalEditComponent } from './route-views/eval/eval-edit/eval-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { FormsModule } from '@angular/forms';
     CoursComponent,
     DetailsCoursComponent,
     CoursAddComponent,
-    CoursEditComponent
+    CoursEditComponent,
+    EvalListComponent,
+    EvalAddComponent,
+    EvalDetailsComponent,
+    EvalEditComponent
   ],
   imports: [
     BrowserModule,

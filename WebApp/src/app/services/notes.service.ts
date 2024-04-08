@@ -16,6 +16,7 @@ export class NotesService {
 
   public addNote(note: Note): Observable<any> {
     const body = JSON.stringify(note);
+    console.log(body)
     const headers = { 'Content-Type': 'application/json' };
     return this.http.post('/api/Note', body, { headers })
   }

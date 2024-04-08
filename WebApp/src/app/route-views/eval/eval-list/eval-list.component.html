@@ -1,0 +1,11 @@
+<h1 class="title"><u>Evaluations</u></h1>
+
+<div class="content">
+  <ul>
+    <li *ngFor="let p of evals" (click)="onClick(p)">
+       {{ p.id }} - {{ p.sujet }} | {{ p.date }}
+    </li>
+  </ul>
+
+  <button (click)="goToAdd()">Ajouter une evaluation</button>
+</div>

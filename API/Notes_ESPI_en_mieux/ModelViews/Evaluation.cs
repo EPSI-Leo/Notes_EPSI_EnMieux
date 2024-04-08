@@ -7,7 +7,7 @@ public partial class Evaluation
 {
     public int Id { get; set; }
 
-    public int? IdCours { get; set; }
+    public int IdCours { get; set; }
 
     public string Sujet { get; set; } = null!;
 
