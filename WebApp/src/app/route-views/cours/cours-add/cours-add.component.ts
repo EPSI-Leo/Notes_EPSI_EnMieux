@@ -46,11 +46,10 @@ export class CoursAddComponent {
     this._coursService.addCours(this.coursModel)
       .subscribe({
         next: (response) => {
+          console.log('API Response:', response);
           this._router.navigate(['cours']);
         },
-        error: (error) => {
-          console.error('API Error:', error);
-        },
+        error: (error) => console.error('API Error:', error)
       });
   }
 

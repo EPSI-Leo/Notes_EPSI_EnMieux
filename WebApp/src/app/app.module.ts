@@ -12,8 +12,6 @@ import { CoursEditComponent } from './route-views/cours/cours-edit/cours-edit.co
 import { FormsModule } from '@angular/forms';
 import { EvalListComponent } from './route-views/eval/eval-list/eval-list.component';
 import { EvalAddComponent } from './route-views/eval/eval-add/eval-add.component';
-import { EvalDetailsComponent } from './route-views/eval/eval-details/eval-details.component';
-import { EvalEditComponent } from './route-views/eval/eval-edit/eval-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +22,7 @@ import { EvalEditComponent } from './route-views/eval/eval-edit/eval-edit.compon
     CoursAddComponent,
     CoursEditComponent,
     EvalListComponent,
-    EvalAddComponent,
-    EvalDetailsComponent,
-    EvalEditComponent
+    EvalAddComponent
   ],
   imports: [
     BrowserModule,

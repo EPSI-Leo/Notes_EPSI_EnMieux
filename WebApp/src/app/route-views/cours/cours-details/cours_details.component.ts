@@ -7,6 +7,8 @@ import { Evaluation } from 'src/app/models/evaluation';
 import { Note } from 'src/app/models/note';
 import { CoursService } from 'src/app/services/cours.service';
 import { NotesService } from 'src/app/services/notes.service';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-cours_details',
@@ -56,12 +58,8 @@ export class DetailsCoursComponent {
     this.notes[noteIndex].valeur = +value.value;
     this._notesService.updateNote(this.notes[noteIndex])
       .subscribe({
-        next: (response) => {
-          console.log('Notes saved successfully:', response);
-        },
-        error: (error) => {
-          console.error('Error saving notes:', error);
-        }
+        next: (response) => console.log('Notes saved successfully:', response),
+        error: (error) => console.error('Error saving notes:', error)
       });
   }
 
@@ -75,12 +73,8 @@ export class DetailsCoursComponent {
     this.notes[noteIndex].coefficient = +value.value;
     this._notesService.updateNote(this.notes[noteIndex])
       .subscribe({
-        next: (response) => {
-          console.log('Notes saved successfully:', response);
-        },
-        error: (error) => {
-          console.error('Error saving notes:', error);
-        }
+        next: (response) => console.log('Notes saved successfully:', response),
+        error: (error) => console.error('Error saving notes:', error)
       });
   }
 
@@ -88,12 +82,29 @@ export class DetailsCoursComponent {
 
     this._coursService.updateCours(this.cours!)
       .subscribe({
-        next: (response) => {
-          console.log('API Response:', response);
-        },
-        error: (error) => {
-          console.error('API Error:', error);
-        },
+        next: (response) => console.log('API Response:', response),
+        error: (error) => console.error('API Error:', error)
       });
+  }
+
+  public exportToExcel(): void {
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+
+    this.evals.forEach(evaluation => {
+      const evalNotes = this.notes.filter(note => note.idEvaluation === evaluation.id);
+      const wsData = evalNotes.map(note => {
+        const student = this.eleves.find(eleve => eleve.id === note.idUser);
+        return {
+          Elève: `${student?.prenom} ${student?.nom}`,
+          Note: note.valeur,
+          Coeff: note.coefficient
+        };
+      });
+      const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(wsData);
+      XLSX.utils.book_append_sheet(wb, ws, evaluation.sujet);
+    });
+
+    const wbout: ArrayBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+    saveAs(new Blob([wbout], { type: 'application/octet-stream' }), 'Course_Details.xlsx');
   }
 }

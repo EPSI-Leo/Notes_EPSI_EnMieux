@@ -19,15 +19,17 @@ export class EvaluationsService {
   public addEvaluation(evaluation: CreateEvalModel): Observable<any> {
     const body = JSON.stringify(evaluation);
     const headers = { 'Content-Type': 'application/json' };
-    return this.http.post('/api/Evaluation', body, { headers })
+    return this.http.post('/api/Evaluation', body, { headers });
   }
 
   public removeEvaluation(id: number): Observable<any> {
     return this.http.delete(`/api/Evaluation/${id}`)
   }
 
-  public updateEvaluation(evaluation: Evaluation): Observable<any> {
-    return this.http.put(`/api/Evaluation/${evaluation.id}`, JSON.stringify(evaluation))
+  public updateEvaluation(evaluation: CreateEvalModel): Observable<any> {
+    const body = JSON.stringify(evaluation);
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.put(`/api/Evaluation/${evaluation.id}`, body, { headers });
   }
 
   public getEvaluation(id: number): Observable<Evaluation | undefined> {

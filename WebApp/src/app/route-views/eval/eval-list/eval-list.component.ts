@@ -29,14 +29,12 @@ export class EvalListComponent {
         console.log(response)
         this._router.navigate(['/eval']);
       },
-      error: (error) => {
-        console.error('Error while fetching cours:', error);
-      }
+      error: (error) => console.error('Error while fetching cours:', error)
     });
   }
 
   public onClick(e: Evaluation) {
-    this._router.navigate(['/eval/details', e.id]);
+    this._router.navigate(['/cours-details', e.idCours]);
   }
 
   public goToAdd() {

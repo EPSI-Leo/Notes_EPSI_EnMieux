@@ -9,6 +9,5 @@
 
   <label for="date">Date:</label>
   <input type="date" formControlName="date">
-
-  <button type="submit" onsubmit="onSubmit()">Submit</button>
+  <button type="submit" onsubmit="onSubmit()">{{evalModel?.id ? 'Update' : 'Submit'}}</button>
 </form>
