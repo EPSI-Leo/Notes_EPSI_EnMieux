@@ -1,6 +1,3 @@
-import { Evaluation } from './evaluation';
-import { Eleve } from './eleve';
-
 export class Note {
   id: number = 0;
   idUser: number = 0;

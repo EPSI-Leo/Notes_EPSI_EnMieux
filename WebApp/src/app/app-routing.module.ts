@@ -6,15 +6,14 @@ import { DetailsCoursComponent } from './route-views/cours/cours-details/cours_d
 import { CoursAddComponent } from './route-views/cours/cours-add/cours-add.component';
 import { EvalListComponent } from './route-views/eval/eval-list/eval-list.component';
 import { EvalAddComponent } from './route-views/eval/eval-add/eval-add.component';
-import { CoursEditComponent } from './route-views/cours/cours-edit/cours-edit.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent , data: { hideNav: true } },
   { path: 'cours', component: CoursComponent },
   { path: 'cours-details/:id', component: DetailsCoursComponent },
   { path: 'cours-add', component: CoursAddComponent },
-  { path: 'cours-edit', component: CoursEditComponent },
   { path: 'eval', component: EvalListComponent },
+  { path: 'eval-add', component: EvalAddComponent },
   { path: 'eval-add/:id', component: EvalAddComponent },
   { path: '**', redirectTo: '' },
 ];

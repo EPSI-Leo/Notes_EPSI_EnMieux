@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cours } from '../models/cours';
 import { Eleve } from '../models/eleve';
+import { Classe } from '../models/classe';
 import { CreateCoursModel } from '../models/createCoursModel';
 
 
@@ -28,8 +29,10 @@ export class CoursService {
     return this.http.delete(`/api/Cours/${id}`)
   }
 
-  public updateCours(cours: Cours): Observable<any> {
-    return this.http.put(`/api/Cours/${cours.id}`, JSON.stringify(cours))
+  public updateCours(cours: CreateCoursModel): Observable<any> {
+    const body = JSON.stringify(cours);
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.put(`/api/Cours/${cours.id}`, body, { headers })
   }
 
   public getCours(id: number): Observable<Cours | undefined> {
@@ -44,7 +47,11 @@ export class CoursService {
     return this.http.get<Eleve[]>(`/api/Cours/GetUsersByCoursId/${id}`);
   }
 
-  getCoursByIdProf(): Observable<any[]> {
+  public getClassesByCoursId(id: number): Observable<Classe[]> {
+    return this.http.get<Classe[]>(`/api/Cours/getClassesByCoursId/${id}`);
+  }
+
+  public getCoursByIdProf(): Observable<any[]> {
     const idProf = this.sessionService.getAuthUser()?.id;
 
     if (!idProf) {

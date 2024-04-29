@@ -8,7 +8,6 @@ import { CoursComponent } from './route-views/cours/cours-list/cours-list.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { DetailsCoursComponent } from './route-views/cours/cours-details/cours_details.component';
 import { CoursAddComponent } from './route-views/cours/cours-add/cours-add.component';
-import { CoursEditComponent } from './route-views/cours/cours-edit/cours-edit.component';
 import { FormsModule } from '@angular/forms';
 import { EvalListComponent } from './route-views/eval/eval-list/eval-list.component';
 import { EvalAddComponent } from './route-views/eval/eval-add/eval-add.component';
@@ -20,7 +19,6 @@ import { EvalAddComponent } from './route-views/eval/eval-add/eval-add.component
     CoursComponent,
     DetailsCoursComponent,
     CoursAddComponent,
-    CoursEditComponent,
     EvalListComponent,
     EvalAddComponent
   ],

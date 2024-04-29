@@ -180,6 +180,17 @@ namespace Notes_ESPI_en_mieux.Controllers
             return Ok(eleves);
         }
 
+        // GET: api/Cours/GetClassesByCoursId/{id}
+        [HttpGet("GetClassesByCoursId/{id}")]
+        public IActionResult GetClassesByCoursId(int id)
+        {
+            var classes = _dbContext.Classes
+                .Where(c => _dbContext.Coursclasses
+                    .Any(cc => cc.IdCours == id && cc.IdClasse == c.Id));
+
+            return Ok(classes);
+        }
+
     }
 
 
